@@ -1,22 +1,11 @@
-const mongouse = require('mongoose');
+const mongoose = require('mongoose');
 require('dotenv').config();
-
 const conexion = process.env.HOST
 
 const dbconexion = async() => {
-
-    try {
-        await mongouse.connect(conexion, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            useFindAndModify: false,
-            useCreateIndex: true
-        });
-        console.log(`Base de datos en linea`);
-    } catch (error) {
-        console.log(error);
-    }
-
+    await mongoose.connect(conexion);
+    console.log("Conectado al claster simplesolutions");
 }
 
-module.exports = { dbconexion };
+module.exports = { dbconexion }
+
